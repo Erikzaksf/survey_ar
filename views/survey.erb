@@ -1,0 +1,33 @@
+
+<h1><%= @survey.survey_name() %></h1>
+
+<p><a href="/surveys/<%= @survey.id() %>/edit">Edit <%= @survey.survey_name() %> survey</a></p>
+
+
+<% if @survey.questions().any?() %>
+  <h3>Here are all the questions in this survey:</h3>
+
+  <ul>
+    <% @survey.questions().each() do |question| %>
+      <li><%= question.survey_name() %> </li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no questions on this survey!</p>
+<% end %>
+
+<h3>Add a question to <%= @survey.survey_name() %> </h3>
+
+<form action="/questions" method="post">
+  <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id() %>">
+
+  <button type="submit">Add question</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <a href="/">Home</a>
+  <a href="/surveys">View All surveys</a>
+</div> 
