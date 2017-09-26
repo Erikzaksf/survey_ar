@@ -1,0 +1,33 @@
+
+<h1><%= @question.question_name() %></h1>
+
+<p><a href="/questions/<%= @question.id() %>/edit">Edit <%= @question.question_name() %> question</a></p>
+
+
+<% if @question.questions().any?() %>
+  <h3>Here are all the answers in this question:</h3>
+
+  <ul>
+    <% @question.questions().each() do |question| %>
+      <li><%= question.question_name() %> </li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no questions on this question!</p>
+<% end %>
+
+<h3>Edit a question to <%= @question.question_name() %> </h3>
+
+<form action="/questions" method="post">
+  <input id="question_id" name="question_id" type="hidden" value="<%= @question.id() %>">
+  <input  name="question" type="text">
+  <button type="submit">Add question</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <a href="/">Home</a>
+  <a href="/questions">View All questions</a>
+</div>
