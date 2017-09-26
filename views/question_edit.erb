@@ -1,0 +1,9 @@
+<h1>Add <%= @question.description() %></h1>
+
+<form action="/questions/<%= @question.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="question">Add a question:</label>
+  <input id="question" type="text" name="question">
+
+  <button type="submit" name="button">Add</button>
+</form>
